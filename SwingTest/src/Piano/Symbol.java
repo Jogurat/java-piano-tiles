@@ -16,7 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public abstract class Symbol {
-
+	//komentar za test
 	protected static Map<String, Pair <String,Integer>> noteMap = new HashMap<String, Pair<String,Integer>>();
 	protected static Map<String, Integer> nameMap = new HashMap<String, Integer>();
 	protected static Map<String, String> keyStrokeMap = new HashMap<String, String>();
