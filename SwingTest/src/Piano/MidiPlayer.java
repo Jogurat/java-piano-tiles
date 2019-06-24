@@ -25,10 +25,11 @@ public class MidiPlayer {
 	}
 
 	public void release(final int note) {
-		if(Composition.getSymbolList().get(Composition.getIndex()+1).isNote())
-			channel.noteOff(note, 50);
-		else
-			channel.noteOff(note, 10);
+//		if(Composition.getSymbolList().get(Composition.getIndex()+1).isNote())
+//			channel.noteOff(note, 50);
+//		else
+//			channel.noteOff(note, 10);
+		channel.noteOff(note, 50);
 	}
 
 	public void play(final int note, final long length) throws InterruptedException {

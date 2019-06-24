@@ -59,19 +59,24 @@ public class GUI{
 				JLabel label = new JLabel(noteNames[whitei]+(i+2));
 				label.setBounds(x + 11, y + 50, white.getIconWidth(), white.getIconHeight());
 				button.setBounds(x, y, white.getIconWidth(), white.getIconHeight());
-				button.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						//System.out.println(Symbol.nameMap.get(noteName));
-						midiPlayer.play(Symbol.nameMap.get(noteName));
-						
-					}
-				});
-				ButtonPressedAction pressed = new ButtonPressedAction(button);
+//				button.addActionListener(new ActionListener() {
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						//System.out.println(Symbol.nameMap.get(noteName));
+//						midiPlayer.play(Symbol.nameMap.get(noteName));
+//						
+//					}
+//				});
+				ButtonPressedAction pressed = new ButtonPressedAction(button, noteName, white, whitePressed);
+				//ButtonPressedAction pressed = new ButtonPressedAction(button);
 				//button.addActionListener(pressed);
+				button.addMouseListener(new MouseClick(noteName));
 				
-				button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Symbol.keyStrokeMap.get(noteName)), "pressed");
-				button.getActionMap().put("pressed", pressed);
+				
+				button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Symbol.keyStrokeMap.get(noteName)), "pressedB");
+				button.getActionMap().put("pressedB", pressed);
+				
+				
 				x += white.getIconWidth();
 				keyboard.add(button, new Integer(1));
 				keyboard.add(label, new Integer(3));
@@ -84,16 +89,16 @@ public class GUI{
 				button.setBounds(newX[blacki], y, black.getIconWidth(), black.getIconHeight());
 				button.setPressedIcon(blackPressed);
 				String noteName = sharpNames[blacki]+(i+2);
-				ButtonPressedAction pressed = new ButtonPressedAction(button);
-				button.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						//System.out.println(Symbol.nameMap.get(noteName));
-						midiPlayer.play(Symbol.nameMap.get(noteName));
-						
-					}
-				});
-				
+				ButtonPressedAction pressed = new ButtonPressedAction(button, noteName, black, blackPressed);
+//				button.addActionListener(new ActionListener() {
+//					@Override
+//					public void actionPerformed(ActionEvent e) {
+//						//System.out.println(Symbol.nameMap.get(noteName));
+//						midiPlayer.play(Symbol.nameMap.get(noteName));
+//						
+//					}
+//				});
+				button.addMouseListener(new MouseClick(noteName));
 				button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(Symbol.keyStrokeMap.get(noteName)), "pressed");
 				button.getActionMap().put("pressed", pressed);
 				//button.setMnemonic(KeyEvent.getExtendedKeyCodeForChar(Symbol.keyStrokeMap.get(noteName).charAt(0)));
